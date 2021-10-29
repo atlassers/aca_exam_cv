@@ -1,5 +1,8 @@
 package it.euris.exam.cinema.repository;
 
-public interface SalaCinematograficaRepository{
+import org.springframework.data.jpa.repository.JpaRepository;
+import it.euris.exam.cinema.data.model.SalaCinematografica;
+
+public interface SalaCinematograficaRepository extends JpaRepository<SalaCinematografica, Long>{
 
 }

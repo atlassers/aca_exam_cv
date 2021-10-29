@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,6 +39,7 @@ public class SalaCinematografica {
   @OneToMany(mappedBy="salaCinematografica")
   private List<Spettatore> spettatori; 
   
-  @OneToMany(mappedBy="salaCinematografica")
-  private List<Film> film; 
+  @OneToOne
+  @JoinColumn(name="id_film", referencedColumnName = "id")
+  private Film film; 
 }

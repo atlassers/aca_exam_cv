@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import it.euris.exam.cinema.data.archetype.Dto;
 import it.euris.exam.cinema.data.archetype.Model;
@@ -41,8 +42,7 @@ public class Film implements Model{
   @Column(name="eta_minima")
   private Long eta;
   
-  @ManyToOne
-  @JoinColumn(name="sala_id", nullable=false)
+  @OneToOne(mappedBy="film")
   private SalaCinematografica salaCinematografica;
   
   @Override
