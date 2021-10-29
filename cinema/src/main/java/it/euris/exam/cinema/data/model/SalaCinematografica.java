@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import it.euris.exam.cinema.data.archetype.Dto;
+import it.euris.exam.cinema.data.archetype.Model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name="sala_cinematografica")
-public class SalaCinematografica {
+public class SalaCinematografica implements Model{
 
   @Id
   @Column(name="id")
@@ -41,5 +43,11 @@ public class SalaCinematografica {
   
   @OneToOne
   @JoinColumn(name="id_film", referencedColumnName = "id")
-  private Film film; 
+  private Film film;
+
+  @Override
+  public Dto toDto() {
+    // TODO Auto-generated method stub
+    return null;
+  } 
 }

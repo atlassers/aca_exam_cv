@@ -27,8 +27,8 @@ public class Biglietto implements Model{
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name="n_posto")
-  private String posto;
+  @Column(name="n_posti")
+  private Long posti;
 
   //riduzioni prezzo anziani e bambini;
   @Column(name="prezzo_finale")
