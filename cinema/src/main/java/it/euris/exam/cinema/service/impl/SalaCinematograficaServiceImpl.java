@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import it.euris.academy.cloud.data.model.Nation;
 import it.euris.exam.cinema.data.dto.SalaCinematograficaDto;
 import it.euris.exam.cinema.data.model.SalaCinematografica;
 import it.euris.exam.cinema.repository.SalaCinematograficaRepository;
@@ -36,7 +35,7 @@ public SalaCinematograficaDto get(Long id) {
 public SalaCinematograficaDto getIncasso(Long id) {
   Optional<SalaCinematografica> sala = salaCinematograficaRepository.findById(id);
   if(sala.isPresent()) {
-      return sala.get().toDto().;
+      
   }
   return null;
 }
@@ -44,4 +43,4 @@ public SalaCinematograficaDto getIncasso(Long id) {
  
 
 //aggiungere metodo in dto per verificare posto in sala.
-}
+
