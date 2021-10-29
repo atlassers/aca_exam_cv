@@ -1,14 +1,15 @@
 package it.euris.exam.cinema.data.model;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import it.euris.exam.cinema.data.archetype.Dto;
-import it.euris.exam.cinema.data.archetype.Model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,28 +20,24 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
-@Table(name="biglietto")
-public class Biglietto implements Model{
+@Table(name="sala_cinematografica")
+public class SalaCinematografica {
 
   @Id
   @Column(name="id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name="n_posto")
-  private String posto;
+  @ManyToOne
+  @JoinColumn(name="cinema_id", nullable=false)
+  private Cinema cinema;
 
-  //riduzioni prezzo anziani e bambini;
-  @Column(name="prezzo_finale")
-  private Long prezzo;
+  @Column(name="posti_totali")
+  private Long N_POSTI;
 
-  @OneToOne(mappedBy = "biglietto")
-  private Spettatore spettatore;
-
-  @Override
-  public Dto toDto() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
+  @OneToMany(mappedBy="salaCinematografica")
+  private List<Spettatore> spettatori; 
+  
+  @OneToMany(mappedBy="salaCinematografica")
+  private List<Film> film; 
 }

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import it.euris.exam.cinema.data.archetype.Dto;
@@ -41,6 +42,10 @@ public class Spettatore implements Model{
   @Builder.Default
   @Column(name="maggiorenne")
   private Boolean maggiorenne = false; 
+  
+  @ManyToOne
+  @JoinColumn(name="id_sala", referencedColumnName="id")
+  private SalaCinematografica salaCinematografica;
   
   @OneToOne
   @JoinColumn(name="id_biglietto", referencedColumnName = "id")
