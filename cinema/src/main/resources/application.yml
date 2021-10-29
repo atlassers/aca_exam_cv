@@ -27,6 +27,13 @@ spring:
     url: jdbc:mysql://localhost:3306/cinema?useLegacyDatetimeCode=false
     username: academy
     password: academy
+### SECURITY ###
+  security:
+    user:
+      name: academy
+      password: academy
+      roles: manager
+### SECURITY ###
 
 ## Actuator api exposed
 management:

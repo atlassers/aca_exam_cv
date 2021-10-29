@@ -7,8 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import it.euris.exam.cinema.data.archetype.Dto;
 import it.euris.exam.cinema.data.archetype.Model;
+import it.euris.exam.cinema.data.dto.BigliettoDto;
+import it.euris.exam.cinema.utils.UT;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -38,9 +39,9 @@ public class Biglietto implements Model{
   private Spettatore spettatore;
 
   @Override
-  public Dto toDto() {
-    // TODO Auto-generated method stub
-    return null;
+  public BigliettoDto toDto() {
+  
+    return BigliettoDto.builder()
+        .id(UT.numberToString(id)).posti(UT.numberToString(posti)).prezzo(UT.numberToString(prezzo)).build();
   }
-
 }

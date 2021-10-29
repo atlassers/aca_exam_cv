@@ -10,8 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import it.euris.exam.cinema.data.archetype.Dto;
 import it.euris.exam.cinema.data.archetype.Model;
+import it.euris.exam.cinema.data.dto.SpettatoreDto;
+import it.euris.exam.cinema.utils.UT;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,6 +40,9 @@ public class Spettatore implements Model{
   @Column(name="data_nascita")
   private Instant dataNascita;
   
+  @Column(name="eta")
+  private Long eta;
+  
   @Builder.Default
   @Column(name="maggiorenne")
   private Boolean maggiorenne = false; 
@@ -52,9 +56,7 @@ public class Spettatore implements Model{
   private Biglietto biglietto;
   
   @Override
-  public Dto toDto() {
-    // TODO Auto-generated method stub
-    return null;
+  public SpettatoreDto toDto() {
+    return SpettatoreDto.builder().id(nome).cognome(cognome).dataDiNascita(UT.fromInstant(dataNascita)).maggiorenne(maggiorenne).age(eta.toString()).build();
   }
-
 }

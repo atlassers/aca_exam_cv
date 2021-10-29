@@ -1,5 +1,6 @@
 package it.euris.exam.cinema.data.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.euris.exam.cinema.data.archetype.Dto;
 import it.euris.exam.cinema.data.archetype.Model;
+import it.euris.exam.cinema.data.dto.CinemaDto;
+import it.euris.exam.cinema.utils.UT;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,9 +39,11 @@ public class Cinema implements Model{
   private List<SalaCinematografica> saleCinematografiche;
   
   @Override
-  public Dto toDto() {
-    // TODO Auto-generated method stub
-    return null;
+  public CinemaDto toDto() {
+    List<SalaCinematografica> collect = new ArrayList<SalaCinematografica>();
+    return CinemaDto.builder()
+        .id(UT.numberToString(id)).incassiTotali(UT.numberToString(incassiTotali)).sale(collect)
+        .build();
   }
 
 }

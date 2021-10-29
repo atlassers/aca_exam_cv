@@ -21,7 +21,7 @@ public class CinemaDto implements Dto{
   private String incassiTotali;
   
   @JsonIgnore
-  private List<SalaCinematografica> sala;
+  private List<SalaCinematografica> sale;
   
   @Override
   public Cinema toModel() {

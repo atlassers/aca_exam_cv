@@ -1,5 +1,6 @@
 package it.euris.exam.cinema.data.dto;
 
+import java.time.Instant;
 import it.euris.exam.cinema.data.archetype.Dto;
 import it.euris.exam.cinema.data.model.Biglietto;
 import it.euris.exam.cinema.data.model.SalaCinematografica;
@@ -22,6 +23,7 @@ public class SpettatoreDto implements Dto{
   private Boolean maggiorenne; 
   private String salaId;
   private String bigliettoId;
+  private String age;
   
   @Override
   public Spettatore toModel() {
